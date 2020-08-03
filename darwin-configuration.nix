@@ -1,11 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ <home-manager/nix-darwin> ];
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
-    ];
+  environment.systemPackages = with pkgs; [
+    vim
+  ];
+
+  users.users = {
+    brian = {};
+  };
+
+  home-manager = {
+    users.brian = (import ./home-manager.nix);
+  };
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -18,6 +28,12 @@
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
+
+  system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
+    name = "applications";
+    paths = config.environment.systemPackages ++ config.home-manager.users.brian.home.packages;
+    pathsToLink = "/Applications";
+  });
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
