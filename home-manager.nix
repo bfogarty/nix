@@ -7,6 +7,10 @@
     userName = "Brian Fogarty";
   };
 
+  programs.kitty = {
+    enable = true;
+  };
+
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
