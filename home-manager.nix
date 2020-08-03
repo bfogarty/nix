@@ -34,5 +34,11 @@
   };
 
   home.packages = with pkgs; [
+    fzf
+    python3
+    awscli
+    k9s
+    kubectl
+    postgresql # for psql
   ];
 }
