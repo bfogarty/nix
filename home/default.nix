@@ -35,6 +35,7 @@
 
   home.packages = with pkgs; [
     fzf
+    httpie
     python3
     awscli
     k9s
