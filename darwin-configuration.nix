@@ -13,7 +13,7 @@
   };
 
   home-manager = {
-    users.brian = (import ./home-manager.nix);
+    users.brian = (import ./home);
   };
 
   # Use a custom configuration.nix location.
