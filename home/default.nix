@@ -3,13 +3,8 @@
 {
   imports = [
     ./fish
+    ./git
   ];
-
-  programs.git = {
-    enable = true;
-    userEmail = "bri@nfogarty.me";
-    userName = "Brian Fogarty";
-  };
 
   programs.kitty = {
     enable = true;
