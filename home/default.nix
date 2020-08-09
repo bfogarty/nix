@@ -4,14 +4,8 @@
   imports = [
     ./fish
     ./git
+    ./kitty
   ];
-
-  programs.kitty = {
-    enable = true;
-    settings = {
-      shell = "/Users/brian/.nix-profile/bin/fish";
-    };
-  };
 
   programs.vim = {
     enable = true;
