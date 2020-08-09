@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
-{
+let
+  mole = pkgs.callPackage ../pkgs/mole { };
+
+in {
   imports = [
     ./fish
     ./git
@@ -17,6 +20,7 @@
   home.packages = with pkgs; [
     fzf
     httpie
+    mole
     python3
     awscli
     k9s
