@@ -22,6 +22,7 @@ in {
     httpie
     mole
     python3
+    pre-commit
     awscli
     k9s
     kubectl
