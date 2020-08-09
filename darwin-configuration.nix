@@ -28,6 +28,9 @@
   programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
 
+  # don't rearrange spaces based on MRU
+  system.defaults.dock.mru-spaces = false;
+
   system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
     name = "applications";
     paths = config.environment.systemPackages ++ config.home-manager.users.brian.home.packages;
