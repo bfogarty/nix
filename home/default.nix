@@ -4,6 +4,7 @@ let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
   kap = pkgs.callPackage ../pkgs/kap { };
   mole = pkgs.callPackage ../pkgs/mole { };
+  rectangle = pkgs.callPackage ../pkgs/rectangle { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
 
@@ -18,6 +19,7 @@ in {
   home.packages = with pkgs; [
     android-studio
     kap
+    rectangle
     fzf
     httpie
     mole
