@@ -23,6 +23,9 @@
 
       # ctags files
       "tags"
+
+      # nix shell configurations
+      "shell.nix"
     ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
       # macOS specific files
       ".DS_Store"
