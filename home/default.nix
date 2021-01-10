@@ -29,13 +29,16 @@ in {
     mole
     python3
     ripgrep
+    tree
     awscli
     sentry-cli
     session-manager-plugin
     k9s
     kubectl
     postgresql # for psql
+    pgcli
     slack
+    jq
   ];
 
   nixpkgs.config = {
