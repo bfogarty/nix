@@ -21,6 +21,7 @@ in {
     kap
     rectangle
     fzf
+    gnumake
     python38Packages.grip
     python38Packages.ipython
     kubernetes-helm
