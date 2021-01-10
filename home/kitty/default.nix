@@ -8,6 +8,7 @@
       shell = "/Users/brian/.nix-profile/bin/fish";
       macos_option_as_alt = "yes";
       confirm_os_window_close = 1;
+      enable_audio_bell = "no";
     };
 
     keybindings = {
