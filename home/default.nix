@@ -18,28 +18,28 @@ in {
 
   home.packages = with pkgs; [
     android-studio
-    kap
-    rectangle
+    awscli
     fzf
     gnumake
-    python38Packages.grip
-    python38Packages.ipython
+    httpie
+    jq
+    k9s
+    kap
+    kubectl
     kubernetes-helm
     # TODO helm-diff (installed via helm plugin install)
-    httpie
     mole
+    pgcli
+    postgresql # for psql
     python3
+    python38Packages.grip
+    python38Packages.ipython
+    rectangle
     ripgrep
-    tree
-    awscli
     sentry-cli
     session-manager-plugin
-    k9s
-    kubectl
-    postgresql # for psql
-    pgcli
     slack
-    jq
+    tree
   ];
 
   nixpkgs.config = {
