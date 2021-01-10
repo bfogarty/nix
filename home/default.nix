@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  kap = pkgs.callPackage ../pkgs/kap { };
   mole = pkgs.callPackage ../pkgs/mole { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
@@ -14,6 +15,7 @@ in {
   ];
 
   home.packages = with pkgs; [
+    kap
     fzf
     httpie
     mole
