@@ -2,6 +2,7 @@
 
 let
   mole = pkgs.callPackage ../pkgs/mole { };
+  sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
 
 in {
@@ -20,6 +21,7 @@ in {
     pre-commit
     ripgrep
     awscli
+    sentry-cli
     session-manager-plugin
     k9s
     kubectl
