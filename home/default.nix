@@ -21,10 +21,11 @@ in {
     kap
     rectangle
     fzf
+    python38Packages.grip
+    python38Packages.ipython
     httpie
     mole
     python3
-    pre-commit
     ripgrep
     awscli
     sentry-cli
