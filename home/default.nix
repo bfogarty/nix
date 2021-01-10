@@ -33,5 +33,10 @@ in {
     k9s
     kubectl
     postgresql # for psql
+    slack
   ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 }
