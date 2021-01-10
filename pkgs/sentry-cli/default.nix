@@ -2,10 +2,10 @@
 
 stdenv.mkDerivation rec {
   name = "sentry-cli";
-  version = "1.59.0";
+  version = "1.61.0";
 
   src = fetchurl {
-    url = "https://github.com/getsentry/sentry-cli/releases/download/v${version}/sentry-cli-Darwin-x86_64";
+    url = "https://github.com/getsentry/sentry-cli/releases/download/${version}/sentry-cli-Darwin-x86_64";
     sha256 = "0m2rl0290z2drh3psni1hvdycnfs2fskg9ak3jic7g9p044iwjzn";
   };
 
