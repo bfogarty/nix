@@ -16,6 +16,7 @@
       wip = "git add .;git commit -m 'WIP' --no-verify";
       unwip = "git reset --soft HEAD~1; git reset .";
     } // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+      flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
       stat = "stat -x";
     };
 
