@@ -15,7 +15,10 @@
       http = "http --style=vim";
       wip = "git add .;git commit -m 'WIP' --no-verify";
       unwip = "git reset --soft HEAD~1; git reset .";
+      nix-shell = "nix-shell --run fish";
     } // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+      # TODO handle env TERM=xterm better for kitty
+      nix-reload = "env TERM=xterm darwin-rebuild switch -I darwin-config=$HOME/dev/nix/darwin-configuration.nix";
       flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
       stat = "stat -x";
     };

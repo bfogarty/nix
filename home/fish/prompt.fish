@@ -81,6 +81,10 @@ function fish_prompt --description 'Write out the prompt'
     echo -n (prompt_pwd)
     set_color normal
 
+    if set -q IN_NIX_SHELL
+        echo -n " <nix>"
+    end
+
     printf '%s ' (__fish_vcs_prompt)
 
     if not test $last_status -eq 0
