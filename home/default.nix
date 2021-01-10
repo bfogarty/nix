@@ -23,6 +23,8 @@ in {
     fzf
     python38Packages.grip
     python38Packages.ipython
+    kubernetes-helm
+    # TODO helm-diff (installed via helm plugin install)
     httpie
     mole
     python3
