@@ -8,14 +8,8 @@ in {
     ./fish
     ./git
     ./kitty
+    ./vim
   ];
-
-  programs.vim = {
-    enable = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-    ];
-  };
 
   home.packages = with pkgs; [
     fzf
@@ -23,6 +17,7 @@ in {
     mole
     python3
     pre-commit
+    ripgrep
     awscli
     k9s
     kubectl
