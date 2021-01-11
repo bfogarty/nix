@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/getsentry/sentry-cli/releases/download/${version}/sentry-cli-Darwin-x86_64";
-    sha256 = "0m2rl0290z2drh3psni1hvdycnfs2fskg9ak3jic7g9p044iwjzn";
+    sha256 = "19x48l3xdwrv8rv4bwjaga6ra0g8s827hy79fayfsdjf2yq3fc6a";
   };
 
   nativeBuildInputs = [
