@@ -7,6 +7,7 @@ let
   rectangle = pkgs.callPackage ../pkgs/rectangle { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
+  terminal-notifier = pkgs.callPackage ../pkgs/terminal-notifier { };
 
 in {
   imports = [
@@ -39,6 +40,7 @@ in {
     sentry-cli
     session-manager-plugin
     slack
+    terminal-notifier
     tree
   ];
 
