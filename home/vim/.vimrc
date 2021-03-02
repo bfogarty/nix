@@ -246,7 +246,7 @@ autocmd! BufNewFile,BufRead *.svelte set ft=html
 autocmd! FileType email,gitcommit setlocal spell spelllang=en_us
 
 " Custom commands
-command! Vimrc tabe ~/.vimrc
+command! Vimrc tabe ~/dev/nix/home/vim/.vimrc
 command! LightlineReload call LightlineReload()
 command! WipeoutHiddenBuffers call WipeoutHiddenBuffers()
 command! PrettyJson %!python -m json.tool
