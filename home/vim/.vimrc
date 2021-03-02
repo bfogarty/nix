@@ -242,6 +242,9 @@ autocmd! FileType vuejs syntax sync fromstart
 " Treat *.svelte as HTML
 autocmd! BufNewFile,BufRead *.svelte set ft=html
 
+" Spell check emails and commit messages
+autocmd! FileType email,gitcommit setlocal spell spelllang=en_us
+
 " Custom commands
 command! Vimrc tabe ~/.vimrc
 command! LightlineReload call LightlineReload()
