@@ -224,9 +224,9 @@ augroup END
 
 " Highlight the current line
 augroup CurBufferHighlight
-autocmd!
-autocmd WinEnter * set cul
-autocmd WinLeave * set nocul
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
 augroup END
 
 " Enable limelight for distraction-free writing
