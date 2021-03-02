@@ -243,7 +243,7 @@ autocmd! FileType vuejs syntax sync fromstart
 autocmd! BufNewFile,BufRead *.svelte set ft=html
 
 " Spell check emails and commit messages
-autocmd! FileType email,gitcommit setlocal spell spelllang=en_us
+autocmd! FileType mail,gitcommit setlocal spell spelllang=en_us
 
 " Custom commands
 command! Vimrc tabe ~/dev/nix/home/vim/.vimrc
