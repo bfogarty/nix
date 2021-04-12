@@ -30,8 +30,16 @@
   programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
 
-  # don't rearrange spaces based on MRU
-  system.defaults.dock.mru-spaces = false;
+  system.defaults.dock = {
+    # don't rearrange spaces based on MRU
+    mru-spaces = false;
+
+    # show only open applications in the dock
+    static-only = true;
+
+    autohide = true;
+    tilesize = 32;
+  };
 
   system.keyboard = {
     enableKeyMapping = true;
