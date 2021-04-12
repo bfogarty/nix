@@ -31,6 +31,11 @@
   # don't rearrange spaces based on MRU
   system.defaults.dock.mru-spaces = false;
 
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
+  };
+
   system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
     name = "applications";
     paths = config.environment.systemPackages ++ config.home-manager.users.brian.home.packages;
