@@ -18,10 +18,6 @@
     users.brian = (import ./home);
   };
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/dev/nix/darwin-configuration.nix
-  environment.darwinConfig = "$HOME/dev/nix/darwin-configuration.nix";
-
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
