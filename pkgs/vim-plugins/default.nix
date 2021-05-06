@@ -41,4 +41,10 @@
     };
     meta.homepage = "https://github.com/xuhdev/vim-latex-live-preview";
   };
+
+  lang = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "lang";
+    version = "0.1.0";
+    src = ./lang;
+  };
 }

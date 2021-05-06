@@ -33,6 +33,7 @@ in {
       vim-javascript  # TODO needed?
       vim-ps1
       customVimPlugins.vim-hcl
+      customVimPlugins.lang
 
       # Writing
       goyo-vim
