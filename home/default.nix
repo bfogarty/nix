@@ -2,6 +2,7 @@
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
+  iam-policy-tf = pkgs.callPackage ../pkgs/iam-policy-tf { };
   kap = pkgs.callPackage ../pkgs/kap { };
   mole = pkgs.callPackage ../pkgs/mole { };
   rectangle = pkgs.callPackage ../pkgs/rectangle { };
@@ -23,6 +24,7 @@ in {
     fzf
     gnumake
     httpie
+    iam-policy-tf
     jq
     k9s
     kap
