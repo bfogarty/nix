@@ -21,7 +21,7 @@ in {
 
   home.packages = with pkgs; [
     android-studio
-    awscli
+    awscli2
     fzf
     gnumake
     httpie
