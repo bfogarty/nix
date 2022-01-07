@@ -43,7 +43,7 @@
       direnv hook fish | source
     '';
 
-    promptInit = builtins.readFile ./prompt.fish;
+    interactiveShellInit = builtins.readFile ./prompt.fish;
 
     functions = {
       fish_greeting = {
