@@ -34,10 +34,10 @@ in {
     # TODO helm-diff (installed via helm plugin install)
     mole
     pgcli
-    postgresql # for psql
     python3
     python38Packages.grip
     python38Packages.ipython
+    postgresql_12 # for psql
     rectangle
     ripgrep
     sentry-cli
