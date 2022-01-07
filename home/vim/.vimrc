@@ -234,7 +234,7 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " Set nonumber in terminal buffers to prevent bad line wrapping
-autocmd! TerminalOpen * setlocal nonumber
+autocmd! TerminalWinOpen * setlocal nonumber
 
 " Preemptively rehighlight .vue files
 autocmd! FileType vuejs syntax sync fromstart
