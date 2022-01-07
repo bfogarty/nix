@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, autoPatchelfHook }:
+{ stdenv, lib, fetchurl, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "sentry-cli";
@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
     install -m755 $src $out/bin/sentry-cli
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = https://github.com/getsentry/sentry-cli;
     description = "A command line utility to work with Sentry.";
     license = licenses.bsd3;

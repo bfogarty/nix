@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, undmg }:
+{ stdenv, lib, fetchurl, undmg }:
 
 stdenv.mkDerivation rec {
   name = "kap";
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     cp -r "Kap.app" "$out/Applications/Kap.app"
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = getkap.co;
     description = "An open-source screen recorder built with web technology";
     platforms = platforms.darwin;

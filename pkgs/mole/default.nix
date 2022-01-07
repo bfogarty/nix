@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, autoPatchelfHook }:
+{ stdenv, lib, fetchurl, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   name = "mole-${version}";
@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
     install -m755 mole $out/bin/mole
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = https://davrodpin.github.io/mole/;
     description = "Easily create SSH tunnels.";
     license = licenses.mit;

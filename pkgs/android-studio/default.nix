@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, undmg }:
+{ stdenv, lib, fetchurl, undmg }:
 
 stdenv.mkDerivation rec {
   name = "android-studio";
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     cp -r "Android Studio.app" "$out/Applications/Android Studio.app"
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = https://developer.android.com/studio;
     description = "Android Studio provides the fastest tools for building apps on every type of Android device.";
     platforms = platforms.darwin;

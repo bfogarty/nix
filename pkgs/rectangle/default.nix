@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, undmg }:
+{ stdenv, lib, fetchurl, undmg }:
 
 stdenv.mkDerivation rec {
   name = "rectangle";
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     cp -r "Rectangle.app" "$out/Applications/Rectangle.app"
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = rectangleapp.com;
     description = "Rectangle is a window management app based on Spectacle.";
     platforms = platforms.darwin;

@@ -1,4 +1,4 @@
-{ stdenv, fetchzip, unzip, python3 }:
+{ stdenv, lib, fetchzip, unzip, python3 }:
 
 stdenv.mkDerivation rec {
   pname = "session-manager-plugin";
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     install -m755 bin/session-manager-plugin $out/bin/session-manager-plugin
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "AWS Systems Manager Session Manager";
     longDescription = ''
       Session Manager is a fully managed AWS Systems Manager capability that
