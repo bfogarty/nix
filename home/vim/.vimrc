@@ -34,9 +34,9 @@ nmap <leader>t :bel term<CR>
 nmap <leader>w :w<CR>
 nmap <leader>wq :wq<CR>
 
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gs :Gstatus<CR><C-w>L
-nmap <leader>gp :Gpush<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gs :Git<CR><C-w>L
+nmap <leader>gp :Git push<CR>
 nmap <leader>gb :Gbranch<CR>
 
 nmap <leader>p :Project<CR>
