@@ -7,6 +7,12 @@
     userEmail = "brian@fogarty.email";
     userName = "Brian Fogarty";
 
+    extraConfig = {
+      pull.rebase = true;
+      diff.colorMoved = "zebra";
+      init.defaultBranch = "main";
+    };
+
     aliases = {
       s = "status -s";
       l = "log --graph --oneline";
