@@ -99,7 +99,7 @@
         body = "cd \"$HOME/dev/$argv[1]\"";
       };
       __fish_workon_complete_projects = ''
-        find $HOME/dev \( -type d -or -type l \) -maxdepth 1 -exec basename {} \;
+        find $HOME/dev -maxdepth 1 \( -type d -or -type l \) -exec basename {} \;
       '';
     };
   };
