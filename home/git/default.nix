@@ -26,6 +26,10 @@
 
       # nix shell configurations
       "shell.nix"
+
+      # direnv
+      ".envrc*"
+      ".direnv"
     ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
       # macOS specific files
       ".DS_Store"

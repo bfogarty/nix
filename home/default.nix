@@ -23,6 +23,7 @@ in {
     android-studio
     awscli2
     ctags
+    direnv
     fzf
     gnumake
     httpie

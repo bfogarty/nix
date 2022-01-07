@@ -37,6 +37,8 @@
       set -x PATH $PATH $HOME/.bin
 
       complete -f -c workon -a "(__fish_workon_complete_projects)"
+
+      direnv hook fish | source
     '';
 
     promptInit = builtins.readFile ./prompt.fish;
