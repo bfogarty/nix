@@ -18,7 +18,7 @@
   };
 
   vim-wordmotion = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-hcl";
+    pname = "vim-wordmotion";
     version = "257a59c";
     src = pkgs.fetchFromGitHub {
       owner = "chaoren";
