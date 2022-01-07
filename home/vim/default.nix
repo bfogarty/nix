@@ -32,6 +32,7 @@ in {
       vim-vue
       vim-javascript  # TODO needed?
       vim-ps1
+      vim-helm
       customVimPlugins.vim-hcl
       customVimPlugins.lang
 
