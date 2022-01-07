@@ -2,6 +2,7 @@
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
+  docker-for-mac = pkgs.callPackage ../pkgs/docker-for-mac { };
   iam-policy-tf = pkgs.callPackage ../pkgs/iam-policy-tf { };
   kap = pkgs.callPackage ../pkgs/kap { };
   mole = pkgs.callPackage ../pkgs/mole { };
@@ -44,6 +45,8 @@ in {
     slack
     terminal-notifier
     tree
+  ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
+    docker-for-mac
   ];
 
   nixpkgs.config = {
