@@ -37,6 +37,9 @@
     tilesize = 32;
   };
 
+  # disable period with double-space
+  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToEscape = true;
