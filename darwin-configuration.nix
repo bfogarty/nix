@@ -12,7 +12,7 @@
     brian = {};
   };
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Chicago";
 
   home-manager = {
     users.brian = (import ./home);
