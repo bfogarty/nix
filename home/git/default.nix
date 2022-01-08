@@ -16,6 +16,7 @@
     aliases = {
       s = "status -s";
       l = "log --graph --oneline";
+      amend = "commit --amend";
       last = "diff HEAD~ HEAD";
       staged = "diff --staged";
     };
