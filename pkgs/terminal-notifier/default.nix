@@ -4,8 +4,6 @@ stdenv.mkDerivation rec {
   name = "terminal-notifier";
   version = "2.0.0";
 
-  phases = [ "unpackPhase" "installPhase" ];
-
   src = fetchurl {
     url = "https://github.com/julienXX/${name}/releases/download/${version}/${name}-${version}.zip";
     sha256 = "033d6yrnq2ac863l1x2a0sqzh22i4hdr6f1m5jqss4lxjxypcvii";

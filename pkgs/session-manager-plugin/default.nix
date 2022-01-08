@@ -4,8 +4,6 @@ stdenv.mkDerivation rec {
   pname = "session-manager-plugin";
   version = "1.2.7.0";
 
-  phases = [ "unpackPhase" "installPhase" ];
-
   base_url = "https://s3.amazonaws.com/session-manager-downloads/plugin";
   docs_url = "https://docs.aws.amazon.com/systems-manager/${version}/userguide/";
 
