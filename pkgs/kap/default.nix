@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   name = "kap";
-  version = "3.3.2";
+  version = "3.5.1";
 
   phases = [ "unpackPhase" "installPhase" ];
 
   src = fetchurl {
     url = "https://github.com/wulkano/Kap/releases/download/v${version}/Kap-${version}.dmg";
-    sha256 = "0ibw1d7dmkxx5nmil14gc0mci34dlzrzs03rn1xzdw18f760axrj";
+    sha256 = "jpPX++MOnCtL2gB4zKXo+UulwenKCxuZEFTZ8iJ8vxs=";
   };
   buildInputs = [ undmg ];
 
