@@ -45,8 +45,9 @@ nmap <leader>f :Files<CR>
 nmap <leader><C-t> :Tags<CR>
 nmap <leader><C-f> :Rg<CR>
 
-nmap <leader>d :ALEGoToDefinition<CR>
-nmap <leader>r :ALEFindReferences<CR>
+nmap <leader>d <plug>(lsp-definition)
+nmap <leader>r <plug>(lsp-references)
+nmap K <plug>(lsp-hover)
 
 " Quick resizing for terminal
 tnoremap <leader>1 <C-w>:res 10<CR>
@@ -94,22 +95,6 @@ function! CurrentProject()
   " the current directory, relative to ~/dev/
   return fnamemodify(getcwd(), ':~:s?\~\/dev\/??')
 endfunction
-
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-\   'python': ['flake8', 'pyls'],
-\   'javascript': ['eslint']
-\ }
-
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\   'python': ['black', 'isort'],
-\   'javascript': ['prettier'],
-\   'go': ['goimports']
-\ }
-
-" extended by ftplugin
-let g:ale_pattern_options = {}
 
 let g:localvimrc_whitelist = [$HOME.'/dev/[^/]\+/.lvimrc']
 
@@ -180,8 +165,8 @@ let g:livepreview_previewer = 'open -a Preview'
 
 " no completion preview, only insert longest common text
 set completeopt=menu,longest
-" use ALE for completion
-set omnifunc=ale#completion#OmniFunc
+" use vim-lsp for completion
+set omnifunc=lsp#complete
 " stop comments on newlines
 set formatoptions-=cro
 " set vert divider character to <space>
@@ -251,8 +236,6 @@ command! LightlineReload call LightlineReload()
 command! WipeoutHiddenBuffers call WipeoutHiddenBuffers()
 command! PrettyJson %!python -m json.tool
 command! -nargs=1 DiffBranch rightbel vsp | exec ":Gedit " . <q-args> . ":" . @%
-command! ALEDisableFixBuffer let b:ale_fix_on_save=0
-command! ALEEnableFixBuffer  let b:ale_fix_on_save=1
 
 command! -bang Project call fzf#run({
           \ 'source': 'ls -d ~/dev/*/ | xargs -n 1 basename',

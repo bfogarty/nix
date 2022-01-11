@@ -18,7 +18,6 @@ in {
       lightline-vim
 
       # Code
-      ale
       fugitive
       fugitive-gitlab-vim
       vim-surround
@@ -35,6 +34,8 @@ in {
       vim-helm
       customVimPlugins.vim-hcl
       customVimPlugins.lang
+      vim-lsp
+      customVimPlugins.vim-lsp-settings
 
       # Writing
       goyo-vim
