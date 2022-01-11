@@ -42,6 +42,18 @@
     meta.homepage = "https://github.com/xuhdev/vim-latex-live-preview";
   };
 
+  vim-lsp-settings = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-lsp-settings";
+    version = "c5ada1e";
+    src = pkgs.fetchFromGitHub {
+      owner = "mattn";
+      repo = "vim-lsp-settings";
+      rev = "c5ada1e93a78afd56c81e1d9f3654a1c7ca28495";
+      sha256 = "034l7avc8zf512zrjzig3h2abfgc41896qpj23pxg89xkw2mkyfa";
+    };
+    meta.homepage = "https://github.com/mattn/vim-lsp-settings";
+  };
+
   lang = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lang";
     version = "0.1.0";
