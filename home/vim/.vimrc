@@ -12,7 +12,7 @@ noremap <Space> :
 " <CR> after search clears highlight
 " disables using <CR> to move down
 " add a second <CR> to re-enable it
-nnoremap <CR> :noh<CR>
+nnoremap <CR> :noh<CR><CR>
 
 noremap <C-q> <C-w>q
 noremap <C-h> <C-w><C-h>
@@ -48,6 +48,9 @@ nmap <leader><C-f> :Rg<CR>
 nmap <leader>d <plug>(lsp-definition)
 nmap <leader>r <plug>(lsp-references)
 nmap K <plug>(lsp-hover)
+nmap ]q :cnext<CR>
+nmap [q :cprevious<CR>
+nmap qq :cclose
 
 " Quick resizing for terminal
 tnoremap <leader>1 <C-w>:res 10<CR>
