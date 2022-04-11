@@ -36,6 +36,8 @@ in {
       customVimPlugins.lang
       vim-lsp
       customVimPlugins.vim-lsp-settings
+      asyncomplete-vim
+      asyncomplete-lsp-vim
 
       # Writing
       goyo-vim
