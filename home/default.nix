@@ -45,6 +45,7 @@ in {
     sentry-cli
     session-manager-plugin
     slack
+    inetutils  # telnet
     terminal-notifier
     tree
   ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
