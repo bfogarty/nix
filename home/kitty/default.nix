@@ -12,8 +12,8 @@
     };
 
     keybindings = {
-      "ctrl+alt+s" = "launch --location=hsplit";
-      "ctrl+alt+v" = "launch --location=vsplit";
+      "ctrl+alt+s" = "launch --location=hsplit --cwd=current";
+      "ctrl+alt+v" = "launch --location=vsplit --cwd=current";
       "ctrl+alt+enter" = "launch --cwd=current";
     };
   };
