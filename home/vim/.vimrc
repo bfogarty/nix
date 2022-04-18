@@ -230,7 +230,10 @@ autocmd! TerminalWinOpen * setlocal nonumber
 autocmd! FileType vuejs syntax sync fromstart
 
 " Treat *.svelte as HTML
-autocmd! BufNewFile,BufRead *.svelte set ft=html
+autocmd! BufNewFile,BufRead *.svelte setlocal ft=html
+
+" Use jsonc for these files
+autocmd! BufNewFile,BufRead tsconfig.json setlocal ft=jsonc
 
 " Spell check emails and commit messages
 autocmd! FileType mail,gitcommit setlocal spell spelllang=en_us
