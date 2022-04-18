@@ -16,6 +16,8 @@
       wip = "git add .;git commit -m 'WIP' --no-verify";
       unwip = "git reset --soft HEAD~1; git reset .";
       nix-shell = "nix-shell --run fish";
+      docker-rm-stopped = "docker rm (docker ps -a -q)";
+      docker-rm-images = "docker rmi (docker images -q)";
     } // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
       # TODO handle env TERM=xterm better for kitty
       nix-reload = "env TERM=xterm darwin-rebuild switch -I darwin-config=$HOME/dev/nix/hosts/(scutil --get LocalHostName).nix";
