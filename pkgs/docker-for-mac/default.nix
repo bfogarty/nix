@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://desktop.docker.com/mac/stable/Docker.dmg";
-    sha256 = "028izydix9nsd6bwaf1555s7czapbr9qhi4gnydx802a99yslcym";
+    sha256 = "08yynxd9zpk5q336gywzg3c866vgy2980zsl0asd0ixkgcmwi0aq";
   };
   nativeBuildInputs = [ undmg installShellFiles ];
 
