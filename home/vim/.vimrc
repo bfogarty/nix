@@ -166,6 +166,8 @@ let g:test#strategy = 'persist'
 
 let g:livepreview_previewer = 'open -a Preview'
 
+let g:lsp_diagnostics_echo_cursor = 1
+
 " no completion preview, only insert longest common text
 set completeopt=menu,longest
 " use vim-lsp for completion
