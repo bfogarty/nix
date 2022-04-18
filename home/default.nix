@@ -18,6 +18,7 @@ in {
     # TODO: broken test: test_fish_integration
     # ./kitty
     ./alacritty
+    ./tmux
     ./vim
   ];
 
