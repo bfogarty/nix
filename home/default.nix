@@ -15,7 +15,9 @@ in {
   imports = [
     ./fish
     ./git
-    ./kitty
+    # TODO: broken test: test_fish_integration
+    # ./kitty
+    ./alacritty
     ./vim
   ];
 
