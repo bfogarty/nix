@@ -7,6 +7,10 @@
     userEmail = "brian@fogarty.email";
     userName = "Brian Fogarty";
 
+    difftastic = {
+      enable = true;
+    };
+
     extraConfig = {
       pull.rebase = true;
       diff.colorMoved = "zebra";
