@@ -81,8 +81,16 @@ function fish_prompt --description 'Write out the prompt'
     echo -n (prompt_pwd)
     set_color normal
 
+    # add k8s context to prompt if kubectl is installed
+    #
+    # IMPROVEME: if prompt performance suffers, can implement caching based on
+    # kubeconfig timestamps
+    if command -sq kubectl
+        printf ' [%s]' (kubectl config current-context)
+    end
+
     if set -q IN_NIX_SHELL
-        echo -n " <nix>"
+        echo -n " <n>"
     end
 
     printf '%s ' (__fish_vcs_prompt)
