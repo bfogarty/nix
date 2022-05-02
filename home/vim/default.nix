@@ -13,7 +13,7 @@ in {
       vim-localvimrc
 
       # UI
-      nord-vim
+      dracula-vim
       nerdtree
       lightline-vim
 

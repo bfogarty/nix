@@ -69,18 +69,8 @@ nmap <silent> t<C-s> :TestSuite<CR>
 "   https://github.com/vim/vim/issues/4738
 nmap gx yiW:!open <cWORD><CR> <C-r>" & <CR><CR>
 
-" disable background color erase (BCE) and redraw after 1 line of scroll
-" workaround for vim bug enabling BCE for terminals that dont' support it
-" kovidgoyal/kitty#108, microsoft/terminal#832
-"
-" Also sets ttyfast, which improves smoothness of redrawing but is only
-" on by default for certain values of `term`, excluding `xterm-kitty`.
-if &term == 'xterm-kitty'
-set t_ut= | set ttyscroll=1
-endif
-
 let g:lightline = {
-\   'colorscheme': 'nord',
+\   'colorscheme': 'dracula',
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
@@ -200,8 +190,7 @@ set autoread
 
 " Colors and fonts
 set guifont=Monaco:h16
-set termguicolors
-colorscheme nord
+colorscheme dracula
 
 " Hide ~ at end of buffer by setting to bg color
 " highlight EndOfBuffer ctermfg=bg guifg=bg
