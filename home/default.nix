@@ -9,7 +9,6 @@ let
   rectangle = pkgs.callPackage ../pkgs/rectangle { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
-  terminal-notifier = pkgs.callPackage ../pkgs/terminal-notifier { };
 
 in {
   imports = [
@@ -49,7 +48,6 @@ in {
     session-manager-plugin
     slack
     inetutils  # telnet
-    terminal-notifier
     tree
   ] ++ lib.optionals (system == "x86_64-darwin") [
     docker-for-mac
