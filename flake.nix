@@ -20,87 +20,58 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: let
-    sharedOverlays = [
+    defaultOverlays = [
       (import ./overlays/autoPatchElf.nix)
       (import ./overlays/shapely.nix)
     ];
 
+    mkDarwinSystem = { username, hostname, system, extraOverlays ? [] }: darwin.lib.darwinSystem {
+      inherit system;
+
+      modules = [
+        # default darwin config module
+        ./darwin-configuration.nix
+
+        # device-specific settings
+        {
+          networking.hostName = hostname;
+          users.users = {
+            ${username} = { home = "/Users/${username}"; };
+          };
+        }
+
+        # home-manager module
+        home-manager.darwinModules.home-manager {
+          nixpkgs = { overlays = defaultOverlays ++ extraOverlays; };
+
+          ##  TODO this removes home-manager from ~/.nix-profile
+          # home-manager.useUserPackages = true;
+          home-manager.useGlobalPkgs = true;
+          home-manager.users.${username} = import ./home;
+
+          home-manager.extraSpecialArgs = {
+            # provide the `stable` channel as an extra arg to home-manager
+            stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
+          };
+        }
+      ];
+    };
+
   in {
     darwinConfigurations = {
-      brian-mbp-2 = let
+      brian-mbp-2 = mkDarwinSystem {
         username = "brian";
-        hostname = "brian-mbp2";
+        hostname = "brian-mbp-2";
         system = "x86_64-darwin";
-
-      in darwin.lib.darwinSystem {
-        inherit system;
-
-        modules = [
-          # default darwin config
-          ./darwin-configuration.nix
-
-          # device-specific settings
-          {
-            networking.hostName = hostname;
-            users.users = {
-              ${username} = { home = "/Users/${username}"; };
-            };
-          }
-
-          # home-manager module
-          home-manager.darwinModules.home-manager {
-            nixpkgs = { overlays = sharedOverlays; };
-
-            ##  TODO this removes home-manager from ~/.nix-profile
-            # home-manager.useUserPackages = true;
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.${username} = import ./home;
-
-            home-manager.extraSpecialArgs = {
-              stable = (import inputs.nixpkgs-stable { inherit system; config = { allowUnfree = true; }; });
-            };
-          }
-        ];
       };
 
-      Thyme-M5772J33W1 = let
+      Thyme-M5772J33W1 = mkDarwinSystem rec {
         username = "brianfogarty";
         hostname = "Thyme-M5772J33W1";
         system = "aarch64-darwin";
-
-      in darwin.lib.darwinSystem {
-        inherit system;
-
-        modules = [
-          # default darwin config
-          ./darwin-configuration.nix
-
-          # device-specific settings
-          {
-            networking.hostName = hostname;
-            users.users = {
-              ${username} = { home = "/Users/${username}"; };
-            };
-          }
-
-          # home-manager module
-          home-manager.darwinModules.home-manager {
-            nixpkgs = {
-              overlays = sharedOverlays ++ [
-                # pin kubectl because max drift w/ server is +/-1 minor version
-                (self: super: { kubectl = (import inputs.pkgs_kubectl_1_21_3 { inherit system; }).pkgs.kubectl; })
-              ];
-            };
-
-            ##  TODO this removes home-manager from ~/.nix-profile
-            # home-manager.useUserPackages = true;
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.${username} = import ./home;
-
-            home-manager.extraSpecialArgs = {
-              stable = (import inputs.nixpkgs-stable { inherit system; });
-            };
-          }
+        extraOverlays = [
+          # pin kubectl because max drift w/ server is +/-1 minor version
+          (self: super: { kubectl = (import inputs.pkgs_kubectl_1_21_3 { inherit system; }).pkgs.kubectl; })
         ];
       };
     };
