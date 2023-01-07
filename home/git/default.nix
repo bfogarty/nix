@@ -41,9 +41,12 @@
       # direnv
       ".envrc*"
       ".direnv"
-    ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
+
       # macOS specific files
       ".DS_Store"
     ];
+    ## TODO isDarwin is impure
+    # ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
+    # ];
   };
 }

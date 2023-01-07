@@ -1,8 +1,9 @@
+{ pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
 
-    shell = "/Users/brian/.nix-profile/bin/fish";
+    shell = "${pkgs.fish}/bin/fish";
     terminal = "tmux-256color";
   };
 }

@@ -10,7 +10,7 @@
       };
 
       shell = {
-        program = "/Users/brian/.nix-profile/bin/fish";
+        program = "${pkgs.fish}/bin/fish";
       };
     };
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, stdenv, stable, ... }:
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
@@ -51,11 +51,19 @@ in {
     inetutils  # telnet
     terminal-notifier
     tree
-  ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
-    docker-for-mac
   ];
+  ## TODO: isDarwin is impure
+  # ++ lib.optionals (pkgs.stdenv.isDarwin && pkgs.stdenv.isx86_64) [
+  #  docker-for-mac
+  #];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  # nixpkgs config for home-manager is set by nix-darwin
+  #
+  # this also sets it outside home-manager (e.g., nix-shell)
+  xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
+
+  # this adds the autoPatchElf overlay outside of home-manager
+  xdg.configFile."nixpkgs/overlays/autoPatchElf.nix".source = ../overlays/autoPatchElf.nix;
+
+  home.stateVersion = "22.11";
 }

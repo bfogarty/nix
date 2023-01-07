@@ -18,12 +18,14 @@
       nix-shell = "nix-shell --run fish";
       docker-rm-stopped = "docker rm (docker ps -a -q)";
       docker-rm-images = "docker rmi (docker images -q)";
-    } // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
-      # TODO handle env TERM=xterm better for kitty
-      nix-reload = "env TERM=xterm darwin-rebuild switch -I darwin-config=$HOME/dev/nix/hosts/(scutil --get LocalHostName).nix";
+
+      # darwin only
+      nix-reload = "darwin-rebuild switch --flake $HOME/dev/nix#(scutil --get LocalHostName)";
       flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
-      stat = "stat -x";
     };
+    # TODO: isDarwin is impure
+    # } // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+    # };
 
     shellInit = ''
       # https://github.com/LnL7/nix-darwin/issues/122#issuecomment-481445861
