@@ -7,7 +7,6 @@ self: super: {
 
         src = python-super.fetchPypi {
           inherit pname version;
-          # sha256 = super.lib.fakeSha256;
           sha256 = "sha256-oZXlHKr6IYKR8suqP+9p/TNTyT7EtlsqRyLEz0DDGYw=";
         };
 
