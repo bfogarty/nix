@@ -27,6 +27,42 @@
 
   in {
     darwinConfigurations = {
+      brian-mbp-2 = let
+        username = "brian";
+        hostname = "brian-mbp2";
+        system = "x86_64-darwin";
+
+      in darwin.lib.darwinSystem {
+        inherit system;
+
+        modules = [
+          # default darwin config
+          ./darwin-configuration.nix
+
+          # device-specific settings
+          {
+            networking.hostName = hostname;
+            users.users = {
+              ${username} = { home = "/Users/${username}"; };
+            };
+          }
+
+          # home-manager module
+          home-manager.darwinModules.home-manager {
+            nixpkgs = { overlays = sharedOverlays; };
+
+            ##  TODO this removes home-manager from ~/.nix-profile
+            # home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.${username} = import ./home;
+
+            home-manager.extraSpecialArgs = {
+              stable = (import inputs.nixpkgs-stable { inherit system; config = { allowUnfree = true; }; });
+            };
+          }
+        ];
+      };
+
       Thyme-M5772J33W1 = let
         username = "brianfogarty";
         hostname = "Thyme-M5772J33W1";
@@ -59,7 +95,7 @@
             ##  TODO this removes home-manager from ~/.nix-profile
             # home-manager.useUserPackages = true;
             home-manager.useGlobalPkgs = true;
-            home-manager.users.brianfogarty = import ./home;
+            home-manager.users.${username} = import ./home;
 
             home-manager.extraSpecialArgs = {
               stable = (import inputs.nixpkgs-stable { inherit system; });
