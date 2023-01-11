@@ -21,7 +21,6 @@
     } // lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
       nix-reload = "darwin-rebuild switch --flake $HOME/dev/nix#(scutil --get LocalHostName)";
       flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
-      stat = "stat -x";
     };
 
     shellInit = ''
