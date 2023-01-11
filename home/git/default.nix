@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, system, ... }:
 
 {
   programs.git = {
@@ -41,12 +41,9 @@
       # direnv
       ".envrc*"
       ".direnv"
-
+    ] ++ lib.optionals (lib.strings.hasSuffix "darwin" system) [
       # macOS specific files
       ".DS_Store"
     ];
-    ## TODO isDarwin is impure
-    # ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
-    # ];
   };
 }

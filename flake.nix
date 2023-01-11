@@ -50,6 +50,8 @@
           home-manager.users.${username} = import ./home;
 
           home-manager.extraSpecialArgs = {
+            inherit system;
+
             # provide the `stable` channel as an extra arg to home-manager
             stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
           };

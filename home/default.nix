@@ -1,4 +1,4 @@
-{ pkgs, stdenv, stable, ... }:
+{ pkgs, system, stdenv, stable, ... }:
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
@@ -51,11 +51,9 @@ in {
     inetutils  # telnet
     terminal-notifier
     tree
+  ] ++ lib.optionals (system == "x86_64-darwin") [
+    docker-for-mac
   ];
-  ## TODO: isDarwin is impure
-  # ++ lib.optionals (pkgs.stdenv.isDarwin && pkgs.stdenv.isx86_64) [
-  #  docker-for-mac
-  #];
 
   # nixpkgs config for home-manager is set by nix-darwin
   #
