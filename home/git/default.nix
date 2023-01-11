@@ -15,6 +15,7 @@
       pull.rebase = true;
       diff.colorMoved = "zebra";
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
 
     aliases = {
