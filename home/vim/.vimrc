@@ -258,6 +258,24 @@ command! -bang Gbranch call fzf#run({
 
 command! -bang Pylist exec '%s/\(.\+\)$\n/"\1",' | normal ^i[$a]
 
+" Manual language server registrations
+" (this is for servers not supported by vim-lsp-settings)
+if executable('rnix-lsp')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'rnix-lsp',
+    \ 'cmd': {server_info->['rnix-lsp']},
+    \ 'allowlist': ['nix'],
+    \ })
+endif
+
+if executable('ansible-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'ansible-language-server',
+    \ 'cmd': {server_info->['ansible-language-server']},
+    \ 'allowlist': ['yaml.ansible'],
+    \ })
+endif
+
 " Redefine Rg command to add `--hidden -g '!.git'`
 command! -bang -nargs=* Rg
 \ call fzf#vim#grep(
