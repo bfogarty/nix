@@ -59,4 +59,10 @@
     version = "0.1.0";
     src = ./lang;
   };
+
+  snippets = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "snippets";
+    version = "0.1.0";
+    src = ./snippets;
+  };
 }

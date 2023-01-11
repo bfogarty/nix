@@ -38,6 +38,8 @@ in {
       customVimPlugins.vim-lsp-settings
       asyncomplete-vim
       asyncomplete-lsp-vim
+      ultisnips
+      customVimPlugins.snippets
 
       # Writing
       goyo-vim
