@@ -91,9 +91,29 @@
         ];
 
         extraModules = [{
-          home-manager.users.${username}.programs.git.includes = [{
-            path = "~/dev/thymesaver/dotfiles/.gitconfig";
-          }];
+          home-manager.users.${username} = {
+            programs.git.includes = [{
+              path = "~/dev/thymesaver/dotfiles/.gitconfig";
+            }];
+
+            launchd.agents.thymeauth = {
+              enable = true;
+              config = {
+                ProgramArguments = [
+                  "${nixpkgs.legacyPackages.${system}.nix}/bin/nix-shell"
+                  "-p"
+                  "poetry"
+                  "--run"
+                  "/Users/${username}/dev/thymesaver/bin/thyme_packages_auth"
+                ];
+                EnvironmentVariables = {
+                  AWS_PROFILE = "thyme-prod-admin";
+                };
+                # every 6 hours (twice as often as required)
+                StartInterval = 7200;
+              };
+            };
+          };
         }];
       };
     };
