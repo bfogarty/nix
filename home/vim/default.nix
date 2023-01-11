@@ -14,8 +14,9 @@ in {
 
       # UI
       dracula-vim
-      nerdtree
       lightline-vim
+      vinegar
+
 
       # Code
       fugitive
