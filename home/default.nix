@@ -20,6 +20,7 @@ in {
     ./alacritty
     ./tmux
     ./vim
+    ./zellij
   ];
 
   home.packages = with pkgs; [
