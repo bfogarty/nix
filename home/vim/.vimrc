@@ -99,6 +99,10 @@ function! DockerTransform(cmd)
   return 'docker-compose run --service-ports '.l:service.' '.a:cmd
 endfunction
 
+function! PoetryTransform(cmd)
+  return 'poetry run '.a:cmd
+endfunction
+
 function! PersistStrategy(cmd)
   if !exists("g:test#vimterminal_buffer") || !bufexists(g:test#vimterminal_buffer)
       belowright 20 new
@@ -150,7 +154,10 @@ function! s:ChangeProject(project)
   execute 'lcd ~/dev/' . a:project
 endfunction
 
-let g:test#custom_transformations = {'docker': function('DockerTransform')}
+let g:test#custom_transformations = {
+  \ 'docker': function('DockerTransform'),
+  \ 'poetry': function('PoetryTransform')
+  \}
 let g:test#custom_strategies = {'persist': function('PersistStrategy')}
 let g:test#strategy = 'persist'
 
