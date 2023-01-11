@@ -60,8 +60,5 @@ in {
   # this also sets it outside home-manager (e.g., nix-shell)
   xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
 
-  # this adds the autoPatchElf overlay outside of home-manager
-  xdg.configFile."nixpkgs/overlays/autoPatchElf.nix".source = ../overlays/autoPatchElf.nix;
-
   home.stateVersion = "22.11";
 }

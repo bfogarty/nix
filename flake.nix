@@ -20,15 +20,26 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: let
-    defaultOverlays = [
-      (import ./overlays/autoPatchElf.nix)
-      (import ./overlays/shapely.nix)
+    globalOverlays = [
+      ./overlays/autoPatchElf.nix
+      ./overlays/shapely.nix
     ];
 
-    mkDarwinSystem = { username, hostname, system, extraOverlays ? [] }: darwin.lib.darwinSystem {
+    mkDarwinSystem = {
+      username,
+      hostname,
+      system,
+      extraOverlays ? [],
+    }: darwin.lib.darwinSystem {
       inherit system;
 
-      modules = [
+      modules = let
+	# create global overlays outside of home-manager, for `nix-shell`, etc
+        xdgOverlays = map (x: {
+          home-manager.users.${username}.xdg.configFile."nixpkgs/overlays/${builtins.baseNameOf x}.nix".source = x;
+	}) globalOverlays;
+
+      in [
         # default darwin config module
         ./darwin-configuration.nix
 
@@ -42,7 +53,9 @@
 
         # home-manager module
         home-manager.darwinModules.home-manager {
-          nixpkgs = { overlays = defaultOverlays ++ extraOverlays; };
+          nixpkgs = {
+            overlays = (map (x: import x) globalOverlays) ++ extraOverlays;
+          };
 
           ##  TODO this removes home-manager from ~/.nix-profile
           # home-manager.useUserPackages = true;
@@ -56,7 +69,7 @@
             stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
           };
         }
-      ];
+      ] ++ xdgOverlays ++ extraModules;
     };
 
   in {
