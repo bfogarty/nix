@@ -30,6 +30,7 @@
       hostname,
       system,
       extraOverlays ? [],
+      extraModules? [],
     }: darwin.lib.darwinSystem {
       inherit system;
 
@@ -69,7 +70,7 @@
             stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
           };
         }
-      ] ++ xdgOverlays;
+      ] ++ xdgOverlays ++ extraModules;
     };
 
   in {
@@ -88,6 +89,12 @@
           # pin kubectl because max drift w/ server is +/-1 minor version
           (self: super: { kubectl = (import inputs.pkgs_kubectl_1_21_3 { inherit system; }).pkgs.kubectl; })
         ];
+
+        extraModules = [{
+          home-manager.users.${username}.programs.git.includes = [{
+            path = "~/dev/thymesaver/dotfiles/.gitconfig";
+          }];
+        }];
       };
     };
   };
