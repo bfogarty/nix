@@ -69,7 +69,7 @@
             stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
           };
         }
-      ] ++ xdgOverlays ++ extraModules;
+      ] ++ xdgOverlays;
     };
 
   in {
