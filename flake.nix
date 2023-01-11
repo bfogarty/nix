@@ -96,6 +96,10 @@
               path = "~/dev/thymesaver/dotfiles/.gitconfig";
             }];
 
+            programs.fish.functions.thyme-dl = ''
+              git clone "git@github.com:thymecare/$argv[1].git" "$HOME/dev/$argv[1]"
+            '';
+
             launchd.agents.thymeauth = {
               enable = true;
               config = {
