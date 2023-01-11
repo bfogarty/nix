@@ -12,6 +12,7 @@ let
 
 in {
   imports = [
+    ./direnv
     ./fish
     ./git
     # TODO: broken test: test_fish_integration
@@ -25,7 +26,6 @@ in {
     android-studio
     awscli2
     ctags
-    direnv
     fzf
     gnumake
     httpie

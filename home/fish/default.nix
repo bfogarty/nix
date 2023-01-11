@@ -39,8 +39,6 @@
       set -x FZF_DEFAULT_COMMAND 'rg --files --hidden -g "!.git"'
 
       complete -f -c workon -a "(__fish_workon_complete_projects)"
-
-      direnv hook fish | source
     '';
 
     interactiveShellInit = builtins.readFile ./prompt.fish;
