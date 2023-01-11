@@ -12,9 +12,9 @@
     extra-experimental-features = "nix-command flakes";
   };
 
-  # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  # Enable (and auto upgrade) the nix daemon, used by multiuser installs.
+  #   https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-daemon.html
+  services.nix-daemon.enable = true;
 
   nixpkgs.config = (import home/nixpkgs-config.nix);
 
