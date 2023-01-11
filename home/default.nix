@@ -1,4 +1,4 @@
-{ pkgs, system, stdenv, stable, ... }:
+{ pkgs, system, stable, ... }:
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
