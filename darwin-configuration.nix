@@ -41,12 +41,6 @@
     remapCapsLockToEscape = true;
   };
 
-  # system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
-  #   name = "applications";
-  #   paths = config.environment.systemPackages ++ config.home-manager.users.brian.home.packages;
-  #   pathsToLink = "/Applications";
-  # });
-
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
