@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, system, stable, ... }:
 
 let
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
@@ -51,11 +51,14 @@ in {
     inetutils  # telnet
     terminal-notifier
     tree
-  ] ++ lib.optionals pkgs.hostPlatform.isDarwin [
+  ] ++ lib.optionals (system == "x86_64-darwin") [
     docker-for-mac
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  # nixpkgs config for home-manager is set by nix-darwin
+  #
+  # this also sets it outside home-manager (e.g., nix-shell)
+  xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
+
+  home.stateVersion = "22.11";
 }

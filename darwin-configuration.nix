@@ -1,26 +1,22 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [ <home-manager/nix-darwin> ];
-
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
   ];
 
-  users.users = {
-    brian = {};
-  };
-
   time.timeZone = "America/Chicago";
 
-  home-manager = {
-    users.brian = (import ./home);
+  nix.settings = {
+    extra-experimental-features = "nix-command flakes";
   };
 
-  # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
+  # Enable (and auto upgrade) the nix daemon, used by multiuser installs.
+  #   https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-daemon.html
+  services.nix-daemon.enable = true;
+
+  nixpkgs.config = (import home/nixpkgs-config.nix);
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
@@ -44,12 +40,6 @@
     enableKeyMapping = true;
     remapCapsLockToEscape = true;
   };
-
-  system.build.applications = pkgs.lib.mkForce (pkgs.buildEnv {
-    name = "applications";
-    paths = config.environment.systemPackages ++ config.home-manager.users.brian.home.packages;
-    pathsToLink = "/Applications";
-  });
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
