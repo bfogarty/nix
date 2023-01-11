@@ -24,8 +24,10 @@ in {
   ];
 
   home.packages = with pkgs; [
+    stable.pkgs.nodePackages.aws-cdk
     android-studio
     awscli2
+    nodePackages.cdk8s-cli
     ctags
     fzf
     gnumake
