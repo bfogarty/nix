@@ -9,7 +9,7 @@
   time.timeZone = "America/Chicago";
 
   nix.settings = {
-    extra-experimental-features = "nix-command";
+    extra-experimental-features = "nix-command flakes";
   };
 
   # Auto upgrade nix package and the daemon service.
