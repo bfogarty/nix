@@ -22,6 +22,7 @@
   programs.zsh.enable = true;  # default shell on catalina
   programs.fish.enable = true;
 
+  # changes here require running `killall Dock` to take effect
   system.defaults.dock = {
     # don't rearrange spaces based on MRU
     mru-spaces = false;
