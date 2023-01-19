@@ -23,6 +23,7 @@
     globalOverlays = [
       ./overlays/autoPatchElf.nix
       ./overlays/shapely.nix
+      ./overlays/git.nix
     ];
 
     mkDarwinSystem = {
