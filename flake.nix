@@ -24,6 +24,7 @@
       ./overlays/autoPatchElf.nix
       ./overlays/shapely.nix
       ./overlays/git.nix
+      ./overlays/pythonPackages.nix
       ./overlays/cdk8s.nix
     ];
 

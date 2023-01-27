@@ -43,9 +43,10 @@ in {
     obsidian
     pgcli
     postgresql_12 # for psql
-    python39
-    python39Packages.grip
-    python39Packages.ipython
+    python310
+    python310Packages.grip
+    python310Packages.ipython
+    stable.poetry
     rectangle
     ripgrep
     sentry-cli
