@@ -12,7 +12,8 @@ jobs:
       fail-fast: false
 
       matrix:
-        host: [brian-mbp-2, Thyme-M5772J33W1]
+        # GitHub doesn't have M1 runners yet
+        host: [brian-mbp-2]
 
     steps:
       - name: Checkout
