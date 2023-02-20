@@ -8,6 +8,9 @@ jobs:
     runs-on: macos-latest
 
     strategy:
+      # continue if one host fails
+      fail-fast: false
+
       matrix:
         host: [brian-mbp-2, Thyme-M5772J33W1]
 
