@@ -27,6 +27,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = docker.com;
     description = "Accelerate how you build, share and run modern applications";
+    broken = true;
     platforms = ["x86_64-darwin"];
   };
 }
