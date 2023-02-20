@@ -7,7 +7,7 @@ jobs:
   cache:
     strategy:
       matrix:
-        host: [brian-mbp-2, Thme-M5772J33W1]
+        host: [brian-mbp-2, Thyme-M5772J33W1]
     name: Cache
     runs-on: ubuntu-latest
     steps:
@@ -17,4 +17,4 @@ jobs:
         with:
           name: bfogarty
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix build .#${{ matrix.host }}
+      - run: nix build .#darwinConfigurations.${{ matrix.host }}
