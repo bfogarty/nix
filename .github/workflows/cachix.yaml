@@ -1,7 +1,7 @@
 name: Cache
 on:
   push:
-    branches: [main]
+    branches: [main, brian/cachix]
 jobs:
   darwin:
     name: Darwin
@@ -27,5 +27,5 @@ jobs:
           name: bfogarty
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build nix-darwin configuration
+      - name: Build and cache nix-darwin configuration
         run: nix build .#darwinConfigurations.${{ matrix.host }}.system
