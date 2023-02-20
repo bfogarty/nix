@@ -4,12 +4,12 @@ on:
     # TODO: remove before merge
     branches: [main, brian/cachix]
 jobs:
-  cache:
+  darwin:
     strategy:
       matrix:
         host: [brian-mbp-2, Thyme-M5772J33W1]
     name: Cache
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v19
@@ -17,4 +17,4 @@ jobs:
         with:
           name: bfogarty
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix build .#darwinConfigurations.${{ matrix.host }}.config.system.build.toplevel
+      - run: nix build .#darwinConfigurations.${{ matrix.host }}.system
