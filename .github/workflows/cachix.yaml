@@ -1,7 +1,7 @@
 name: Cache
 on:
   push:
-    branches: [main, brian/cachix]
+    branches: [main]
 jobs:
   darwin:
     name: Darwin
