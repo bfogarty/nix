@@ -55,7 +55,6 @@ in {
     inetutils  # telnet
     tree
   ] ++ lib.optionals (system == "x86_64-darwin") [
-    docker-for-mac
   ];
 
   # nixpkgs config for home-manager is set by nix-darwin
