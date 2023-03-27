@@ -241,6 +241,10 @@ command! WipeoutHiddenBuffers call WipeoutHiddenBuffers()
 command! PrettyJson %!python -m json.tool
 command! -nargs=1 DiffBranch rightbel vsp | exec ":Gedit " . <q-args> . ":" . @%
 
+" a='foo', b='bar' <> 'a': 'foo', 'b': 'bar'
+command! -range PyKeyToKwarg :<line1>,<line2>s/"\([^"]\+\)": \([^,]\+\),\?/\1=\2,/g
+command! -range PyKwargToKey :<line1>,<line2>s/\([^ ]\+\)=\([^,]\+\),\?/"\1": \2,/g
+
 command! -bang Project call fzf#run({
           \ 'source': 'ls -d ~/dev/*/ | xargs -n 1 basename',
           \ 'sink': function('s:ChangeProject'),
