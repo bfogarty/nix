@@ -9,6 +9,7 @@ let
   rectangle = pkgs.callPackage ../pkgs/rectangle { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
+  todoist = pkgs.callPackage ../pkgs/todoist { };
 
 in {
   imports = [
@@ -54,6 +55,7 @@ in {
     slack
     inetutils  # telnet
     tree
+    todoist
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
 
