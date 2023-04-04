@@ -6,16 +6,15 @@
       default_mode = "locked";
 
       keybinds = {
-        unbind = [
-          # clashes with vim bindings
-          { "Ctrl" = "h"; }
-        ];
-        normal = [
-          {
-            "action" = [ { "SwitchToMode" = "Move"; } ];
-            "key" = [ { "Ctrl" = "k"; } ];
-          }
-        ];
+        # clashes with vim bindings
+        unbind = "Ctrl h";
+
+        normal = {
+          bind = {
+            _args = [ "Ctrl k" ];
+            SwitchToMode = "Move";
+          };
+        };
       };
 
       default_shell = "fish";
