@@ -27,6 +27,11 @@
 
       shell = {
         program = "${pkgs.fish}/bin/fish";
+        args = [
+          "-c"
+          # on startup, join or create the zellij session "dev"
+          "${pkgs.zellij}/bin/zellij a --create dev"
+        ];
       };
     };
 
