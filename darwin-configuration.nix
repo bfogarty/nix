@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
+let
+  darwin = import ./lib/darwin.nix { };
+
+in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -44,6 +48,11 @@
 
   # disable period with double-space
   system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+
+  # disable default hotkeys
+  system.activationScripts.extraUserActivation.text = darwin.disableHotkeys [
+    darwin.hotkeys.spotlight
+  ];
 
   system.keyboard = {
     enableKeyMapping = true;

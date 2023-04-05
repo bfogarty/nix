@@ -58,6 +58,7 @@ in {
     inetutils  # telnet
     tree
     todoist
+    raycast
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
 
