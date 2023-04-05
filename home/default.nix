@@ -1,6 +1,7 @@
 { pkgs, system, stable, ... }:
 
 let
+  arc = pkgs.callPackage ../pkgs/arc { };
   android-studio = pkgs.callPackage ../pkgs/android-studio { };
   docker-for-mac = pkgs.callPackage ../pkgs/docker-for-mac { };
   iam-policy-tf = pkgs.callPackage ../pkgs/iam-policy-tf { };
@@ -25,6 +26,7 @@ in {
   ];
 
   home.packages = with pkgs; [
+    arc
     stable.pkgs.nodePackages.aws-cdk
     android-studio
     awscli2
