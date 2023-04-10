@@ -18,6 +18,7 @@
       nix-shell = "nix-shell --run fish";
       docker-rm-stopped = "docker rm (docker ps -a -q)";
       docker-rm-images = "docker rmi (docker images -q)";
+      reset-poetry-env = "poetry env remove (poetry env list | cut -d ' ' -f 1)";
     } // lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
       nix-reload = "darwin-rebuild switch --flake $HOME/dev/nix#(scutil --get LocalHostName)";
       flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
