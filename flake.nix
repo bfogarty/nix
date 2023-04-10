@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
     # private repo - flake inputs are retrieved lazily so this won't
-    # error on machines that don't have access
+    # error on machines that don't have access if unused
     thymesaver = {
       url = "git+ssh://git@github.com/thymecare/thymesaver";
       flake = false;
@@ -121,7 +121,7 @@
                     builtins.concatStringsSep
                       ":"
                       (map (x: "${nixpkgs.legacyPackages.${system}.${x}}/bin") dependencies);
-                  AWS_PROFILE = "thyme-prod-admin";
+                  AWS_PROFILE = "thyme-prod-engineering";
                 };
                 # every 6 hours (twice as often as required)
                 StartInterval = 7200;
