@@ -5,6 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
+    # private repo - flake inputs are retrieved lazily so this won't
+    # error on machines that don't have access
+    thymesaver = {
+      url = "git+ssh://git@github.com/thymecare/thymesaver";
+      flake = false;
+    };
+
     # pinned package versions
     pkgs_kubectl_1_21_3.url = "github:nixos/nixpkgs?rev=b9acd426df4b1ae98da24f1a973968f83f5dcb19";
 
@@ -94,7 +101,7 @@
         extraModules = [{
           home-manager.users.${username} = {
             programs.git.includes = [{
-              path = "~/dev/thymesaver/dotfiles/.gitconfig";
+              path = "${inputs.thymesaver}/dotfiles/.gitconfig";
             }];
 
             programs.fish.functions.thyme-dl = ''
@@ -105,13 +112,15 @@
               enable = true;
               config = {
                 ProgramArguments = [
-                  "${nixpkgs.legacyPackages.${system}.nix}/bin/nix-shell"
-                  "-p"
-                  "poetry"
-                  "--run"
-                  "/Users/${username}/dev/thymesaver/bin/thyme_packages_auth"
+                  "${inputs.thymesaver}/bin/thyme_packages_auth"
                 ];
                 EnvironmentVariables = {
+                  PATH = let
+                    dependencies = [ "awscli2" "poetry" "coreutils" ];
+                  in
+                    builtins.concatStringsSep
+                      ":"
+                      (map (x: "${nixpkgs.legacyPackages.${system}.${x}}/bin") dependencies);
                   AWS_PROFILE = "thyme-prod-admin";
                 };
                 # every 6 hours (twice as often as required)

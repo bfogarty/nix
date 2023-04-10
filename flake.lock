@@ -95,7 +95,24 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "pkgs_kubectl_1_21_3": "pkgs_kubectl_1_21_3"
+        "pkgs_kubectl_1_21_3": "pkgs_kubectl_1_21_3",
+        "thymesaver": "thymesaver"
+      }
+    },
+    "thymesaver": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1674753081,
+        "narHash": "sha256-eMBpUYlF/1nDaYumFQ2Ss8L+xwKjgpwdEZhwfR3SB90=",
+        "ref": "refs/heads/main",
+        "rev": "027cb7e49bee8faf11c2c9cdd7c209374e515a82",
+        "revCount": 379,
+        "type": "git",
+        "url": "ssh://git@github.com/thymecare/thymesaver"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/thymecare/thymesaver"
       }
     },
     "utils": {
