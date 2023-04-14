@@ -8,7 +8,7 @@
     # private repo - flake inputs are retrieved lazily so this won't
     # error on machines that don't have access if unused
     thymesaver = {
-      url = "git+ssh://git@github.com/thymecare/thymesaver";
+      url = "git+ssh://git@github.com/thymecare/thymesaver?ref=main";
       flake = false;
     };
 
