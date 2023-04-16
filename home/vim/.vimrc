@@ -277,6 +277,11 @@ if executable('ansible-language-server')
     \ })
 endif
 
+" override the default svelte-language-server cmd
+let g:lsp_settings = {
+\  'svelte-language-server': {'cmd': ['svelteserver', '--stdio']}
+\}
+
 " Redefine Rg command to add `--hidden -g '!.git'`
 command! -bang -nargs=* Rg
 \ call fzf#vim#grep(
