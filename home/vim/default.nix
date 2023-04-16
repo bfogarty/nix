@@ -33,6 +33,7 @@ in {
       vim-javascript  # TODO needed?
       vim-ps1
       vim-helm
+      vim-svelte
       customVimPlugins.vim-hcl
       customVimPlugins.lang
       vim-lsp

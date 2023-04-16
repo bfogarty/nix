@@ -225,9 +225,6 @@ autocmd! TerminalWinOpen * setlocal nonumber
 " Preemptively rehighlight .vue files
 autocmd! FileType vuejs syntax sync fromstart
 
-" Treat *.svelte as HTML
-autocmd! BufNewFile,BufRead *.svelte setlocal ft=html
-
 " Use jsonc for these files
 autocmd! BufNewFile,BufRead tsconfig.json setlocal ft=jsonc
 
