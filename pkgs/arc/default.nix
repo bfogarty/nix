@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   name = "arc";
-  version = "0.98.1-38290";
+  version = "0.98.2-38335";
 
   src = fetchurl {
     url = "https://releases.arc.net/release/Arc-${version}.dmg";
-    sha256 = "sha256-dba0ca6Y9CO6n0jLtWpXPIaWDZUgVjvkGNgCoRHP4NY=";
+    sha256 = "sha256-aiUNW/LvFSJXajI5+t9B0KF6xM2IZOCfR6d737GuGEU=";
   };
   buildInputs = [ undmg ];
 
