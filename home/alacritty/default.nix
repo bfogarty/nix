@@ -17,6 +17,11 @@
           mods = "Alt";
           chars = "\\x1be";
         }
+        {
+          key = "V";
+          mods = "Alt";
+          chars = "\\x1bv";
+        }
         # for zellij
         { key = "H"; mods = "Alt"; chars = "\\x1bh"; }
         { key = "J"; mods = "Alt"; chars = "\\x1bj"; }
