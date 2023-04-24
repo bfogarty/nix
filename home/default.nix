@@ -10,6 +10,7 @@ let
   rectangle = pkgs.callPackage ../pkgs/rectangle { };
   sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
   session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
+  spotify = pkgs.callPackage ../pkgs/spotify { };
   todoist = pkgs.callPackage ../pkgs/todoist { };
 
 in {
@@ -59,6 +60,7 @@ in {
     tree
     todoist
     raycast
+    spotify
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
 
