@@ -60,6 +60,7 @@ in {
     tree
     todoist
     raycast
+    keybase
     spotify
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
