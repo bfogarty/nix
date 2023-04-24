@@ -37,6 +37,9 @@
 
       set -x PATH $PATH $HOME/.bin
 
+      # Thyme specific
+      set -x PATH $PATH $HOME/dev/thymesaver/bin
+
       set -x FZF_DEFAULT_COMMAND 'rg --files --hidden -g "!.git"'
 
       complete -f -c workon -a "(__fish_workon_complete_projects)"
