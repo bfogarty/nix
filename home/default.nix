@@ -1,17 +1,11 @@
-{ pkgs, system, stable, ... }:
+{ pkgs, lib, system, stable, ... }:
 
 let
-  arc = pkgs.callPackage ../pkgs/arc { };
-  android-studio = pkgs.callPackage ../pkgs/android-studio { };
-  docker-for-mac = pkgs.callPackage ../pkgs/docker-for-mac { };
-  iam-policy-tf = pkgs.callPackage ../pkgs/iam-policy-tf { };
-  kap = pkgs.callPackage ../pkgs/kap { };
-  mole = pkgs.callPackage ../pkgs/mole { };
-  rectangle = pkgs.callPackage ../pkgs/rectangle { };
-  sentry-cli = pkgs.callPackage ../pkgs/sentry-cli { };
-  session-manager-plugin = pkgs.callPackage ../pkgs/session-manager-plugin { };
-  spotify = pkgs.callPackage ../pkgs/spotify { };
-  todoist = pkgs.callPackage ../pkgs/todoist { };
+  # automatically call all packages in ../pkgs
+  customPkgs = lib.attrsets.mapAttrs' (name: value: {
+    inherit name;
+    value = pkgs.callPackage (../pkgs + "/${name}") { };
+  }) (builtins.readDir ../pkgs);
 
 in {
   imports = [
@@ -26,7 +20,7 @@ in {
     ./zellij
   ];
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs // customPkgs; [
     arc
     stable.pkgs.nodePackages.aws-cdk
     android-studio
