@@ -19,6 +19,7 @@
       docker-rm-stopped = "docker rm (docker ps -a -q)";
       docker-rm-images = "docker rmi (docker images -q)";
       reset-poetry-env = "poetry env remove (poetry env list | cut -d ' ' -f 1)";
+      kubectx = "kubectl config use-context (kubectl config get-contexts -o name | fzf --height ~5)";
     } // lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
       nix-reload = "darwin-rebuild switch --flake $HOME/dev/nix#(scutil --get LocalHostName)";
       flushdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
