@@ -26,6 +26,7 @@ in {
       vim-test
       customVimPlugins.vim-latex-live-preview
       customVimPlugins.vim-wordmotion
+      splitjoin-vim
 
       # Syntax
       vim-nix
