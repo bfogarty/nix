@@ -35,6 +35,7 @@ nmap <leader>w :w<CR>
 nmap <leader>wq :wq<CR>
 
 nmap <leader>gc :Git commit<CR>
+nmap <leader>gcn :Git commit --no-verify<CR>
 nmap <leader>gs :Git<CR><C-w>L
 nmap <leader>gp :Git push<CR>
 nmap <leader>gb :Gbranch<CR>
