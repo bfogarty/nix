@@ -44,7 +44,7 @@ in {
     python310
     python310Packages.grip
     python310Packages.ipython
-    stable.poetry
+    poetry
     rectangle
     ripgrep
     sentry-cli
