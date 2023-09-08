@@ -49,7 +49,6 @@ in {
     ripgrep
     sentry-cli
     session-manager-plugin
-    slack
     inetutils  # telnet
     tree
     todoist
