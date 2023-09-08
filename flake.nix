@@ -31,6 +31,7 @@
       ./overlays/autoPatchElf.nix
       ./overlays/cdk8s.nix
       ./overlays/pythonPackages.nix
+      ./overlays/poetry.nix
     ];
 
     mkDarwinSystem = {
