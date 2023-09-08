@@ -10,7 +10,7 @@
     };
 
     shellAliases = {
-      e = "$VISUAL";
+      e = "stat .venv &> /dev/null; and poetry run $VISUAL; or $VISUAL";
       l = "ls -al";
       http = "http --style=vim";
       wip = "git add .;git commit -m 'WIP' --no-verify";
