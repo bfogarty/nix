@@ -55,6 +55,7 @@ in {
     raycast
     keybase
     spotify
+    nmap
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
 
