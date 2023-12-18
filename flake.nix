@@ -90,9 +90,9 @@
         system = "x86_64-darwin";
       };
 
-      Thyme-M5772J33W1 = mkDarwinSystem rec {
+      Thyme-CareM5772J33W1 = mkDarwinSystem rec {
         username = "brianfogarty";
-        hostname = "Thyme-M5772J33W1";
+        hostname = "Thyme-CareM5772J33W1";
         system = "aarch64-darwin";
         extraOverlays = [
           # pin kubectl because max drift w/ server is +/-1 minor version
