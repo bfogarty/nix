@@ -5,7 +5,7 @@
     enable = true;
 
     shellAbbrs = {
-      dc = "docker-compose";
+      dc = "docker compose";
       g = "git";
     };
 
