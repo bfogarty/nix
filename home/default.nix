@@ -41,9 +41,9 @@ in {
     obsidian
     pgcli
     postgresql_12 # for psql
-    python310
-    python310Packages.grip
-    python310Packages.ipython
+    python311
+    python311Packages.grip
+    python311Packages.ipython
     poetry
     rectangle
     ripgrep

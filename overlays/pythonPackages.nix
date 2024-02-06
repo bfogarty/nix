@@ -1,5 +1,5 @@
 self: super: {
-  python310 = super.python310.override {
+  python311 = super.python311.override {
     packageOverrides = python-self: python-super: {
     };
   };
