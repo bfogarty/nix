@@ -7,6 +7,11 @@
     userEmail = "brian@fogarty.email";
     userName = "Brian Fogarty";
 
+    signing = {
+      key = "2742DCAE6B6532EB0B3085291BF984D7BCEC49A5";
+      signByDefault = true;
+    };
+
     difftastic = {
       enable = true;
     };

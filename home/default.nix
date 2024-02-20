@@ -29,6 +29,7 @@ in {
     ctags
     fzf
     gnumake
+    gnupg
     httpie
     iam-policy-tf
     jq
