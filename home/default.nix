@@ -22,6 +22,7 @@ in {
 
   home.packages = with pkgs // customPkgs; [
     arc
+    bitwarden-cli
     stable.pkgs.nodePackages.aws-cdk
     android-studio
     awscli2
