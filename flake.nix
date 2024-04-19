@@ -13,7 +13,7 @@
     };
 
     # pinned package versions
-    pkgs_kubectl_1_21_3.url = "github:nixos/nixpkgs?rev=b9acd426df4b1ae98da24f1a973968f83f5dcb19";
+    pkgs_kubectl_1_21_3.url = "github:nixos/nixpkgs?rev=ffb4d9542a9fab7cc5fe34fdaa5378d398ab3a99";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
