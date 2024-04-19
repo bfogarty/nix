@@ -10,6 +10,7 @@ let
 in {
   imports = [
     ./direnv
+    ./eza
     ./fish
     ./git
     # TODO: broken test: test_fish_integration

@@ -11,7 +11,7 @@
 
     shellAliases = {
       e = "stat .venv &> /dev/null; and poetry run $VISUAL; or $VISUAL";
-      l = "ls -al";
+      l = "eza";
       http = "http --style=vim";
       wip = "git add .;git commit -m 'WIP' --no-verify";
       unwip = "git reset --soft HEAD~1; git reset .";
