@@ -13,7 +13,7 @@
     };
 
     # pinned package versions
-    pkgs_kubectl_1_21_3.url = "github:nixos/nixpkgs?rev=ffb4d9542a9fab7cc5fe34fdaa5378d398ab3a99";
+    pkgs_kubectl_1_28_4.url = "github:nixos/nixpkgs?rev=ffb4d9542a9fab7cc5fe34fdaa5378d398ab3a99";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -96,7 +96,7 @@
         system = "aarch64-darwin";
         extraOverlays = [
           # pin kubectl because max drift w/ server is +/-1 minor version
-          (self: super: { kubectl = (import inputs.pkgs_kubectl_1_21_3 { inherit system; }).pkgs.kubectl; })
+          (self: super: { kubectl = (import inputs.pkgs_kubectl_1_28_4 { inherit system; }).pkgs.kubectl; })
         ];
 
         extraModules = [{

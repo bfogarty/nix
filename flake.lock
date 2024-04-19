@@ -72,7 +72,7 @@
         "type": "github"
       }
     },
-    "pkgs_kubectl_1_21_3": {
+    "pkgs_kubectl_1_28_4": {
       "locked": {
         "lastModified": 1700315389,
         "narHash": "sha256-9OcqkzkcExqkBGnvzdkn/VtaYlRj07zjHMqCFc+bvcQ=",
@@ -94,7 +94,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "pkgs_kubectl_1_21_3": "pkgs_kubectl_1_21_3",
+        "pkgs_kubectl_1_28_4": "pkgs_kubectl_1_28_4",
         "thymesaver": "thymesaver"
       }
     },
