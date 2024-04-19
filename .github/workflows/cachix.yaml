@@ -1,19 +1,22 @@
 name: Cache
 on:
   push:
-    branches: [main]
+    branches: [main, brian/cachix-m1]
 jobs:
   darwin:
     name: Darwin
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       # continue if one host fails
       fail-fast: false
 
       matrix:
-        # GitHub doesn't have M1 runners yet
-        host: [brian-mbp-2]
+        include:
+          - host: brian-mbp-2
+            os: macos-latest # Intel
+          - host: Thyme-M5772J33W1
+            os: macos-latest-xlarge # M1
 
     steps:
       - name: Checkout
