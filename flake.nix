@@ -27,70 +27,19 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: let
-    globalOverlays = [
-      ./overlays/autoPatchElf.nix
-      ./overlays/cdk8s.nix
-      ./overlays/pythonPackages.nix
-      ./overlays/poetry.nix
-    ];
-
-    mkDarwinSystem = {
-      username,
-      hostname,
-      system,
-      extraOverlays ? [],
-      extraModules? [],
-    }: darwin.lib.darwinSystem {
-      inherit system;
-
-      modules = let
-	# create global overlays outside of home-manager, for `nix-shell`, etc
-        xdgOverlays = map (x: {
-          home-manager.users.${username}.xdg.configFile."nixpkgs/overlays/${builtins.baseNameOf x}.nix".source = x;
-	}) globalOverlays;
-
-      in [
-        # default darwin config module
-        ./darwin-configuration.nix
-
-        # device-specific settings
-        {
-          networking.hostName = hostname;
-          users.users = {
-            ${username} = { home = "/Users/${username}"; };
-          };
-        }
-
-        # home-manager module
-        home-manager.darwinModules.home-manager {
-          nixpkgs = {
-            overlays = (map (x: import x) globalOverlays) ++ extraOverlays;
-          };
-
-          ##  TODO this removes home-manager from ~/.nix-profile
-          # home-manager.useUserPackages = true;
-          home-manager.useGlobalPkgs = true;
-          home-manager.users.${username} = import ./home;
-
-          home-manager.extraSpecialArgs = {
-            inherit system;
-
-            # provide the `stable` channel as an extra arg to home-manager
-            stable = (import inputs.nixpkgs-stable { inherit system; config = (import ./home/nixpkgs-config.nix); });
-          };
-        }
-      ] ++ xdgOverlays ++ extraModules;
+    mkSystem = import ./lib/mkSystem.nix {
+      inherit home-manager darwin;
+      nixpkgs-stable = inputs.nixpkgs-stable;
     };
-
   in {
     darwinConfigurations = {
-      brian-mbp-2 = mkDarwinSystem {
+      brian-mbp-2 = mkSystem.mkDarwinSystem {
         username = "brian";
         hostname = "brian-mbp-2";
         system = "x86_64-darwin";
       };
 
-      Thyme-M5772J33W1 = mkDarwinSystem rec {
+      Thyme-M5772J33W1 = mkSystem.mkDarwinSystem rec {
         username = "brianfogarty";
         hostname = "Thyme-M5772J33W1";
         system = "aarch64-darwin";
