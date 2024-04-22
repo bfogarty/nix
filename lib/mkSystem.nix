@@ -20,12 +20,32 @@
     ${name} = (import pkgs { inherit system; }).pkgs.${name};
   });
 
+  # makes a nix-darwin system configuration
+  #
+  # specifically:
+  #   - applies some global overlays to home-manager and nixpkgs
+  #   - sets device-specific settings (username, hostname)
+  #   - applies the global darwin config, ../darwin-configuration.nix
+  #   - applies the home-manager config ../home
+  #
+  # usage:
+  #   mkDarwinSystem {
+  #     username = "...";
+  #     hostname = "...";
+  #     system = "x86_64-darwin"; 
+  # 
+  #     extraOverlays = [(self: super: { ... })];
+  #   }
   mkDarwinSystem = {
     username,
     hostname,
     system,
+
+    # extra nixpkgs overlays to apply to home-manager
     extraOverlays ? [],
-    extraModules? [],
+
+    # extra modules to merge with this config, allows host-specific settings
+    extraHomeManager ? {},
   }: darwin.lib.darwinSystem {
     inherit system;
 
@@ -63,15 +83,18 @@
         ##  TODO this removes home-manager from ~/.nix-profile
         # home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
-        home-manager.users.${username} = import ../home;
+        home-manager.users.${username} = (import ../home) // extraHomeManager;
 
         home-manager.extraSpecialArgs = {
           inherit system;
 
           # provide the `stable` channel as an extra arg to home-manager
-          stable = (import nixpkgs-stable { inherit system; config = (import ../home/nixpkgs-config.nix); });
+          stable = (import nixpkgs-stable {
+            inherit system;
+            config = (import ../home/nixpkgs-config.nix);
+          });
         };
       }
-    ] ++ xdgOverlays ++ extraModules;
+    ] ++ xdgOverlays;
   };
 }
