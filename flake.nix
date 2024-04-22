@@ -27,10 +27,8 @@
   };
 
   outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: let
-    mkSystem = import ./lib/mkSystem.nix {
-      inherit home-manager darwin;
-      nixpkgs-stable = inputs.nixpkgs-stable;
-    };
+    mkSystem = import ./lib/mkSystem.nix inputs;
+
   in {
     darwinConfigurations = {
       brian-mbp-2 = mkSystem.mkDarwinSystem {
