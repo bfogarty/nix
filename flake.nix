@@ -41,9 +41,14 @@
         username = "brianfogarty";
         hostname = "Thyme-M5772J33W1";
         system = "aarch64-darwin";
+
         extraOverlays = [
           # pin kubectl because max drift w/ server is +/-1 minor version
-          (self: super: { kubectl = (import inputs.pkgs_kubectl_1_28_4 { inherit system; }).pkgs.kubectl; })
+          (mkSystem.mkPinOverlay {
+            inherit system;
+            name = "kubectl";
+            pkgs = inputs.pkgs_kubectl_1_28_4;
+          })
         ];
 
         extraModules = [{

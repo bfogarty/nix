@@ -1,6 +1,25 @@
 { home-manager, darwin, nixpkgs-stable, ... }:
 
 {
+  # makes an overlay that replaces a package with the version from `pkgs`
+  #
+  # useful for pinning a package to the version available in a particular
+  # nixpkgs revision: https://lazamar.co.uk/nix-versions/
+  #
+  # usage:
+  #   mkPinOverlay {
+  #     name = "kubectl";
+  #     system = "x86_64-darwin"; 
+  #     pkgs = (builtins.fetchTarball { url = "..." });
+  #   }
+  mkPinOverlay = {
+    name,
+    system,
+    pkgs,
+  }: (self: super: {
+    ${name} = (import pkgs { inherit system; }).pkgs.${name};
+  });
+
   mkDarwinSystem = {
     username,
     hostname,
