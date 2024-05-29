@@ -19,6 +19,7 @@ in {
 
 
       # Code
+      copilot-vim
       fugitive
       fugitive-gitlab-vim
       vim-surround

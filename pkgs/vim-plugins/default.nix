@@ -54,6 +54,18 @@
     meta.homepage = "https://github.com/mattn/vim-lsp-settings";
   };
 
+  copilot-vim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "copilot-vim";
+    version = "v1.31.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "github";
+      repo = "copilot.vim";
+      rev = "v1.31.0";
+      sha256 = pkgs.lib.fakeSha256;
+    };
+    meta.homepage = "https://github.com/mattn/vim-lsp-settings";
+  };
+
   lang = pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "lang";
     version = "0.1.0";
