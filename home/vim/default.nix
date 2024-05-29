@@ -17,11 +17,9 @@ in {
       lightline-vim
       vinegar
 
-
       # Code
       copilot-vim
       fugitive
-      fugitive-gitlab-vim
       vim-surround
       vim-commentary
       vim-test
