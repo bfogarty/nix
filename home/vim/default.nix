@@ -20,6 +20,7 @@ in {
       # Code
       copilot-vim
       fugitive
+      vim-rhubarb
       vim-surround
       vim-commentary
       vim-test
