@@ -10,7 +10,7 @@ in
   environment.systemPackages = with pkgs; [
   ];
 
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   nix.settings = {
     substituters = [
