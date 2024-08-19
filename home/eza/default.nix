@@ -8,7 +8,6 @@
       "--long"
       "--all"
       "--group-directories-first"
-      "--git-ignore"
       "--no-permissions"
       "--no-user"
       "--no-time"
