@@ -10,7 +10,6 @@
     };
 
     shellAliases = {
-      e = "stat .venv &> /dev/null; and poetry run $VISUAL; or $VISUAL";
       l = "eza";
       http = "http --style=vim";
       wip = "git add .;git commit -m 'WIP' --no-verify";
@@ -49,6 +48,12 @@
     interactiveShellInit = builtins.readFile ./prompt.fish;
 
     functions = {
+      e = {
+        description = "Editor";
+        body = ''
+          stat .venv &> /dev/null; and poetry run $VISUAL $argv; or $VISUAL $argv
+        '';
+      };
       fish_greeting = {
         description = "Draw the fish shell logo";
         body = ''
