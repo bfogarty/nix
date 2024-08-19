@@ -9,26 +9,9 @@
         size = 15.0;
       };
 
-      key_bindings = [
-        # unlike kitty, alacritty has no darwin "option as meta" setting
-        # https://github.com/alacritty/alacritty/issues/62
-        {
-          key = "E";
-          mods = "Alt";
-          chars = "\\x1be";
-        }
-        {
-          key = "V";
-          mods = "Alt";
-          chars = "\\x1bv";
-        }
-        # for zellij
-        { key = "H"; mods = "Alt"; chars = "\\x1bh"; }
-        { key = "J"; mods = "Alt"; chars = "\\x1bj"; }
-        { key = "K"; mods = "Alt"; chars = "\\x1bk"; }
-        { key = "L"; mods = "Alt"; chars = "\\x1bl"; }
-        { key = "N"; mods = "Alt"; chars = "\\x1bn"; }
-      ];
+      window = {
+        option_as_alt = "Both";
+      };
 
       # https://github.com/nordtheme/alacritty/blob/main/src/nord.yaml
       colors = {
