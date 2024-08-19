@@ -71,7 +71,7 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap gx yiW:!open <cWORD><CR> <C-r>" & <CR><CR>
 
 let g:lightline = {
-\   'colorscheme': 'dracula',
+\   'colorscheme': 'nord',
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
@@ -198,7 +198,8 @@ set autoread
 
 " Colors and fonts
 set guifont=Monaco:h16
-colorscheme dracula
+set termguicolors
+colorscheme nord
 
 " Hide ~ at end of buffer by setting to bg color
 " highlight EndOfBuffer ctermfg=bg guifg=bg

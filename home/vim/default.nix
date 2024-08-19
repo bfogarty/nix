@@ -14,6 +14,7 @@ in {
 
       # UI
       dracula-vim
+      nord-vim
       lightline-vim
       vinegar
 
