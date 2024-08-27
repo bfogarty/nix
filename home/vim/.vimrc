@@ -263,10 +263,10 @@ command! -bang Pylist exec '%s/\(.\+\)$\n/"\1",' | normal ^i[$a]
 
 " Manual language server registrations
 " (this is for servers not supported by vim-lsp-settings)
-if executable('rnix-lsp')
+if executable('nixd')
   au User lsp_setup call lsp#register_server({
-    \ 'name': 'rnix-lsp',
-    \ 'cmd': {server_info->['rnix-lsp']},
+    \ 'name': 'nixd',
+    \ 'cmd': {server_info->['nixd']},
     \ 'allowlist': ['nix'],
     \ })
 endif
