@@ -12,6 +12,12 @@ in
 
   time.timeZone = "America/New_York";
 
+  nix.gc = {
+    automatic = true;
+    interval = { Weekday = 1; Hour = 0; Minute = 0; };  # Monday 00:00
+    options = "--delete-older-than 30d";
+  };
+
   nix.settings = {
     substituters = [
       "https://cache.nixos.org/"
