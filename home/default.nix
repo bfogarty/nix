@@ -47,7 +47,7 @@ in {
     python311
     python311Packages.grip
     python311Packages.ipython
-    poetry
+    python311Packages.poetry
     rectangle
     ripgrep
     sentry-cli
