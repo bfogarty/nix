@@ -62,6 +62,10 @@ in {
   ] ++ lib.optionals (system == "x86_64-darwin") [
   ];
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   # nixpkgs config for home-manager is set by nix-darwin
   #
   # this also sets it outside home-manager (e.g., nix-shell)
