@@ -38,7 +38,6 @@ in {
     kubectl
     kubernetes-helm
     # TODO helm-diff (installed via helm plugin install)
-    mole
     obsidian
     pgcli
     postgresql_12 # for psql
