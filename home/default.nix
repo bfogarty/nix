@@ -40,7 +40,7 @@ in {
     # TODO helm-diff (installed via helm plugin install)
     obsidian
     pgcli
-    postgresql_12 # for psql
+    postgresql_16 # for psql
     python311
     python311Packages.grip
     python311Packages.ipython

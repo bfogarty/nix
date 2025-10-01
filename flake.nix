@@ -43,6 +43,8 @@
     }: darwin.lib.darwinSystem {
       inherit system;
 
+      specialArgs = { inherit username; };
+
       modules = let
 	# create global overlays outside of home-manager, for `nix-shell`, etc
         xdgOverlays = map (x: {

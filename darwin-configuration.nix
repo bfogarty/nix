@@ -1,10 +1,20 @@
-{ pkgs, ... }:
+{ username, pkgs, ... }:
 
 let
   darwin = import ./lib/darwin.nix { };
 
 in
 {
+  system.primaryUser = username;
+
+  # https://github.com/nix-darwin/nix-darwin/issues/1339
+  #
+  # error: Build user group has mismatching GID, aborting activation
+  # The default Nix build user group ID was changed from 30000 to 350.
+  # You are currently managing Nix build users with nix-darwin, but your
+  # nixbld group has GID 350, whereas we expected 30000.
+  ids.gids.nixbld = 350;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -30,10 +40,6 @@ in
     extra-experimental-features = "nix-command flakes";
   };
 
-  # Enable (and auto upgrade) the nix daemon, used by multiuser installs.
-  #   https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-daemon.html
-  services.nix-daemon.enable = true;
-
   nixpkgs.config = (import home/nixpkgs-config.nix);
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -55,10 +61,14 @@ in
   # disable period with double-space
   system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
 
-  # disable default hotkeys
-  system.activationScripts.extraUserActivation.text = darwin.disableHotkeys [
-    darwin.hotkeys.spotlight
-  ];
+  system.activationScripts = {
+    # disable default hotkeys
+    disableHotkeys = {
+      text = darwin.disableHotkeys [
+        darwin.hotkeys.spotlight
+      ];
+    };
+  };
 
   system.keyboard = {
     enableKeyMapping = true;
