@@ -25,7 +25,6 @@ in {
     arc
     # broken: bitwarden-cli
     stable.pkgs.nodePackages.aws-cdk
-    android-studio
     awscli2
     nodePackages.cdk8s-cli
     ctags
