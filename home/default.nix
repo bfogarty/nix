@@ -35,7 +35,6 @@ in {
     iam-policy-tf
     jq
     k9s
-    kap
     kubectl
     kubernetes-helm
     # TODO helm-diff (installed via helm plugin install)
