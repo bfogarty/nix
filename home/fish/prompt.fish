@@ -86,7 +86,7 @@ function fish_prompt --description 'Write out the prompt'
     # IMPROVEME: if prompt performance suffers, can implement caching based on
     # kubeconfig timestamps
     if command -sq kubectl
-        printf ' [%s]' (kubectl config current-context)
+        printf ' [%s]' (kubectl config current-context 2>/dev/null)
     end
 
     if set -q IN_NIX_SHELL
