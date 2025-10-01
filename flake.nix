@@ -90,6 +90,12 @@
         system = "x86_64-darwin";
       };
 
+      brian-air = mkDarwinSystem {
+        username = "brian";
+        hostname = "brian-air";
+        system = "aarch64-darwin";
+      };
+
       Thyme-M5772J33W1 = mkDarwinSystem rec {
         username = "brianfogarty";
         hostname = "Thyme-M5772J33W1";
