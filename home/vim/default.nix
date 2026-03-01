@@ -16,11 +16,11 @@ in {
       dracula-vim
       nord-vim
       lightline-vim
-      vinegar
+      vim-vinegar
 
       # Code
       copilot-vim
-      fugitive
+      vim-fugitive
       vim-rhubarb
       vim-surround
       vim-commentary
