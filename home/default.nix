@@ -13,6 +13,7 @@ in {
     ./direnv
     ./eza
     ./fish
+    ./ghostty
     ./git
     ./gpg
     # TODO: broken test: test_fish_integration
