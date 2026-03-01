@@ -42,11 +42,11 @@ in {
     obsidian
     pgcli
     postgresql_16 # for psql
-    python311
-    python311Packages.grip
-    python311Packages.ipython
-    (poetry.override { python3 = python311; })
     rectangle
+    python313
+    python313Packages.grip
+    python313Packages.ipython
+    (poetry.override { python3 = python313; })
     ripgrep
     sentry-cli
     session-manager-plugin
