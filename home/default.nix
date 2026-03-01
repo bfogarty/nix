@@ -14,6 +14,7 @@ in {
     ./eza
     ./fish
     ./git
+    ./gpg
     # TODO: broken test: test_fish_integration
     # ./kitty
     ./alacritty
@@ -31,7 +32,6 @@ in {
     ctags
     fzf
     gnumake
-    gnupg
     httpie
     iam-policy-tf
     jq
@@ -55,6 +55,7 @@ in {
     todoist
     raycast
     keybase
+    openssl
     spotify
     nmap
   ] ++ lib.optionals (system == "x86_64-darwin") [
