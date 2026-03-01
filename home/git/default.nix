@@ -15,7 +15,7 @@
         email = "brian@fogarty.email";
       };
 
-      aliases = {
+      alias = {
         s = "status -s";
         l = "log --graph --oneline";
         amend = "commit --amend";
