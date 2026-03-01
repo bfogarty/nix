@@ -43,7 +43,6 @@ in {
     obsidian
     pgcli
     postgresql_16 # for psql
-    rectangle
     python313
     python313Packages.grip
     python313Packages.ipython
