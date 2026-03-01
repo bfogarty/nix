@@ -4,31 +4,29 @@
   programs.git = {
     enable = true;
 
-    userEmail = "brian@fogarty.email";
-    userName = "Brian Fogarty";
-
     signing = {
       key = "2742DCAE6B6532EB0B3085291BF984D7BCEC49A5";
       signByDefault = true;
     };
 
-    difftastic = {
-      enable = true;
-    };
+    settings = {
+      user = {
+        name = "Brian Fogarty";
+        email = "brian@fogarty.email";
+      };
 
-    extraConfig = {
+      aliases = {
+        s = "status -s";
+        l = "log --graph --oneline";
+        amend = "commit --amend";
+        last = "diff HEAD~ HEAD";
+        staged = "diff --staged";
+      };
+
       pull.rebase = true;
       diff.colorMoved = "zebra";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
-    };
-
-    aliases = {
-      s = "status -s";
-      l = "log --graph --oneline";
-      amend = "commit --amend";
-      last = "diff HEAD~ HEAD";
-      staged = "diff --staged";
     };
 
     ignores = [

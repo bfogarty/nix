@@ -9,6 +9,7 @@ let
 
 in {
   imports = [
+    ./difftastic
     ./direnv
     ./eza
     ./fish
