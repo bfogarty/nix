@@ -12,8 +12,7 @@ jobs:
       fail-fast: false
 
       matrix:
-        # GitHub doesn't have M1 runners yet
-        host: [brian-mbp-2]
+        host: [brian-air]
 
     steps:
       - name: Checkout
