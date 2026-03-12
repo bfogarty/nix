@@ -55,7 +55,6 @@ in {
     todoist
     raycast
     keybase
-    openssl
     spotify
     nmap
   ] ++ lib.optionals (system == "x86_64-darwin") [
