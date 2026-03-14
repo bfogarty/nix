@@ -106,6 +106,18 @@
       __fish_workon_complete_projects = ''
         find $HOME/dev -maxdepth 1 \( -type d -or -type l \) -exec basename {} \;
       '';
+      git_prune_merged_branches = {
+        description = "Prunes branches that have been merged by the Squash and Merge strategy.";
+        body = ''
+          for branch in (git for-each-ref refs/heads/ --format="%(refname:short)")
+            set mergeBase (git merge-base main $branch)
+            set cherryResult (git cherry main (git commit-tree (git rev-parse "$branch^{tree}") -p $mergeBase -m _))
+            if string match -q -- "-*" $cherryResult
+              git branch -D $branch
+            end
+          end
+        '';
+      };
     };
   };
 }
