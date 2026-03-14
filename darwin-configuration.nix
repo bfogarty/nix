@@ -61,13 +61,11 @@ in
   # disable period with double-space
   system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
 
-  system.activationScripts = {
-    # disable default hotkeys
-    disableHotkeys = {
-      text = darwin.disableHotkeys [
-        darwin.hotkeys.spotlight
-      ];
-    };
+  system.activationScripts.extraActivation = {
+    text = builtins.concatStringsSep "\n" [
+      # disable default hotkeys
+      (darwin.disableHotkeys [ darwin.hotkeys.spotlight ])
+    ];
   };
 
   system.keyboard = {
