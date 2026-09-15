@@ -65,6 +65,7 @@ in
     text = builtins.concatStringsSep "\n" [
       # disable default hotkeys
       (darwin.disableHotkeys [ darwin.hotkeys.spotlight ])
+      (darwin.enableBatteryWakeOnLan true )
     ];
   };
 

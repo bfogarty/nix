@@ -18,4 +18,9 @@
     ${builtins.concatStringsSep "\n" (map disableHotkey ks)}
     ${systemAdministration}/Resources/activateSettings -u
   '';
+
+  enableBatteryWakeOnLan = isEnabled: ''
+    echo >&2 "setting Wake-on-LAN..."
+    pmset -b womp ${if isEnabled then "1"else "0"}
+  '';
 }
