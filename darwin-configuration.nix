@@ -65,6 +65,8 @@ in
     text = builtins.concatStringsSep "\n" [
       # disable default hotkeys
       (darwin.disableHotkeys [ darwin.hotkeys.spotlight ])
+      # enable Wake-on-LAN on battery to allow device to receive notifications
+      # like iMessages while it sleeps, avoid delayed notifications on wake
       (darwin.enableBatteryWakeOnLan true )
     ];
   };
