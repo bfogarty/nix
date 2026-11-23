@@ -2,10 +2,19 @@ name: Cache
 on:
   push:
     branches: [main]
+
+permissions:
+  contents: read
+
 jobs:
   darwin:
     name: Darwin
     runs-on: macos-latest
+
+    # CACHIX_AUTH_TOKEN lives only in this environment, which is restricted
+    # to `main`. Keep this job to the steps below: every later step can read
+    # the token, so run any other tooling in a separate job without it.
+    environment: cachix
 
     strategy:
       # continue if one host fails
@@ -16,16 +25,32 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@bb0495a1086c46893eee56f32fd192dfe4a15bb9 # v32.0.0
 
       - name: Setup Cachix
-        uses: cachix/cachix-action@v16
+        uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866 # v17
         with:
           name: bfogarty
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
-      - name: Build and cache nix-darwin configuration
-        run: nix build .#darwinConfigurations.${{ matrix.host }}.system
+      - name: Build nix-darwin configuration
+        id: build
+        env:
+          HOST: ${{ matrix.host }}
+        run: |
+          path=$(nix build ".#darwinConfigurations.$HOST.system" --no-link --print-out-paths)
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+
+      # cachix-action only finishes uploading at the end of the job, and
+      # `cachix pin` fails for paths that aren't uploaded yet, so push first.
+      - name: Push and pin nix-darwin configuration
+        env:
+          SYSTEM_PATH: ${{ steps.build.outputs.path }}
+        run: |
+          cachix push bfogarty "$SYSTEM_PATH"
+          cachix pin bfogarty darwin-system "$SYSTEM_PATH" --keep-revisions 1
